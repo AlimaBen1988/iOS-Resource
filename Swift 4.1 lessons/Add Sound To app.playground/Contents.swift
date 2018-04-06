@@ -15,12 +15,13 @@ import AVFoundation  //Library of Audio
 
 var audioPlayer = AVAudioPlayer() //define the variable as audioplayer
 
-let noteSound = NSURL(fileURLWithPath: Bundle.main.path(forResource: "note", ofType: "wav")!) //Create URL of the Sound file location
+let noteSound = Bundle.main.url(forResource: "note1", withExtension: "wav") //Create URL of the Sound file location
 
 do { //Settig up the sound file
-    audioPlayer = try AVAudioPlayer(contentsOf: noteSound as URL)
-} catch { //if there is a problem is printing the message
-    print("Problem in getting File")
+    audioPlayer = try AVAudioPlayer(contentsOf: noteSound!)
+} catch { //It will print the error if ther has any
+    print(error)
 }
 
 audioPlayer.play() //playing the sound
+
